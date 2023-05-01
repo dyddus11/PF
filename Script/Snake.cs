@@ -8,14 +8,13 @@ public class Snake : MonoBehaviour
 
     public float _hp = 100f;
 
-    // public GameObject Bullet;
     public float coolTime = 1f;
 
     public Transform firePoint;
 
     public bool isEnemyDetected = false;
 
-    public float detectionRadius = 100f; 
+    public float detectionRadius = 1f; 
 
     public Enemy enemy;
     private List<Enemy> enemies;
@@ -26,6 +25,7 @@ public class Snake : MonoBehaviour
     {
         Enemy nearestEnemy = null; 
         float nearestDistance = Mathf.Infinity;
+        enemies = new List<Enemy>(FindObjectsOfType<Enemy>()); 
 
         foreach(Enemy enemy in enemies)
         {
@@ -49,7 +49,6 @@ public class Snake : MonoBehaviour
 
             bulletController.SetEnemyPosition(nearestEnemy.GetPos());
         }
-
     }
 
     // Start is called before the first frame update

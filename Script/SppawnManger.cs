@@ -4,34 +4,71 @@ using UnityEngine;
 
 public class SppawnManger : MonoBehaviour
 {
-    public GameObject Enemy; 
-    public float spawnRange = 10.0f;
-    public float spawnDistance = 10.0f;
-    public Transform[] _spawnPoint; 
+    public float spawnTime = 0.5f; 
+
+    public Transform[] spawnPoints; 
+    public float spawnRadius = 10.0f;
+     private Vector2 screenBounds;
+
+    private Camera mainCamera; 
+
+    public GameObject[] enemies; 
+
+    public GameObject enemyPrefab;
 
     public void Spawn()
     {
-        // Camera mainCamera = Camera.main;
+        // Vector2 randomPoint = Random.insideUnitCircle.normalized * spawnRadius;
+        // Vector3 randomScreenPoint = mainCamera.ViewportToWorldPoint(new Vector3(randomPoint.x, randomPoint.y, 10f));
 
-        // Vector3 cameraPosition = mainCamera.transform.position; 
-        // Vector3 cameraForward = mainCamera.transform.forward;
+        // // GameObject randomEnemy = enemies[Random.Range(0, )]
 
-        // Vector3 spawnPosition = cameraPosition + cameraForward * spawnDistance;
-        // Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+        // Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)]; 
+        // Instantiate(EnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
 
-        // int index = Random.Range(0, _spawnPoint.Length); 
-        // Transform spawnPoint = _spawnPoint[index];
+           // 랜덤한 위치 계산
+        Vector2 spawnPosition = new Vector2(Random.Range(screenBounds.x, screenBounds.x + 2f * screenBounds.magnitude),
+                                            Random.Range(screenBounds.y, screenBounds.y + 2f * screenBounds.magnitude));
+
+        for(int i =0; i<10; i++)
+        {
+                    // 적 생성
+            Instantiate(enemyPrefab, spawnPosition += Vector2.left, Quaternion.identity);
+        }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Spawn();
+        // mainCamera = Camera.main; 
+
+        // spawnPoints = new Transform[transform.childCount];
+
+        // for(int i =0; i< transform.childCount; i++)
+        // {
+        //     spawnPoints[i] = transform.GetChild(i);
+        // }
+
+        // InvokeRepeating("Spawn",spawnTime, spawnTime);
+
+         mainCamera = Camera.main;
+
+        // 카메라의 크기와 위치를 가져와서 스크린 바운드 계산
+        float cameraHeight = 2f * mainCamera.orthographicSize;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+        screenBounds = new Vector2(mainCamera.transform.position.x - cameraWidth / 2f,
+                                   mainCamera.transform.position.y - cameraHeight / 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        spawnTime -= Time.deltaTime; 
+
+        if(spawnTime <= 0)
+        {
+            Spawn();
+            spawnTime = 3.0f; 
+        }
+
     }
 }

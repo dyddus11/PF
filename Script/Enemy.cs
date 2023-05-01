@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     public float Hp  = 1f; 
 
+    public float exp = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,11 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    float giveExp()
+    {
+        return exp;
+    }
+
     public Vector3 GetPos()
     {
         return transform.position;
@@ -73,6 +80,13 @@ public class Enemy : MonoBehaviour
         if(Hp <= 0)
         {
             dead();
+            ExpManger expManger = FindObjectOfType<ExpManger>();
+
+            if(expManger != null)
+            {
+                expManger.GainExp(exp);
+            }
+
         }
     }
 }
