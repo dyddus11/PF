@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5913728000099961854}
   - component: {fileID: -4094154979009480926}
   - component: {fileID: 7299533556677974978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -104,6 +104,8 @@ MonoBehaviour:
   Player: {fileID: 2093832296994860975, guid: 743b06de1feb09c4d9e6fcaab927b623, type: 3}
   ATK: 1
   coolTime: 3
+  Hp: 1
+  exp: 1
 --- !u!50 &-4094154979009480926
 Rigidbody2D:
   serializedVersion: 4
