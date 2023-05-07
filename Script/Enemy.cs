@@ -49,16 +49,17 @@ public class Enemy : MonoBehaviour
 
     void attack()
     {
-       Player.GetComponent<Snake>()._hp -= ATK;
-       Vector3 KnockbackDir = Player.transform.position - transform.position;  
+        Player.GetComponent<Snake>().TakeDamge(ATK);
 
-       float KnockbackMagnitude = KnockbackDir.magnitude;
-       KnockbackDir.y = 0f;
-       KnockbackDir = KnockbackDir.normalized * 1f;
+        Vector3 KnockbackDir = Player.transform.position - transform.position;  
 
-       Player.GetComponent<Rigidbody2D>().AddForce(KnockbackDir, ForceMode2D.Impulse);
+        float KnockbackMagnitude = KnockbackDir.magnitude;
+        KnockbackDir.y = 0f;
+        KnockbackDir = KnockbackDir.normalized * 1f;
 
-       StartCoroutine(ChangeColorRoutine());
+        Player.GetComponent<Rigidbody2D>().AddForce(KnockbackDir, ForceMode2D.Impulse);
+
+        StartCoroutine(ChangeColorRoutine());
     }
 
     private IEnumerator ChangeColorRoutine()

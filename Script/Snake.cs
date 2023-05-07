@@ -8,6 +8,8 @@ public class Snake : MonoBehaviour
 
     public float _hp = 100f;
 
+    public float currentHp;
+
     public float coolTime = 1f;
 
     public Transform firePoint;
@@ -56,9 +58,16 @@ public class Snake : MonoBehaviour
         }
     }
 
+    public void TakeDamge(float damage)
+    {
+        currentHp -= damage;
+        healthBar.SetHealth(currentHp);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        currentHp = _hp;
         enemies = new List<Enemy>(FindObjectsOfType<Enemy>()); 
         healthBar.setMaxHealth(_hp);
     }
