@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player; 
 
     public float ATK = 1f;
-    public float coolTime = 3f;
+    public float coolTime = 1f;
 
     public float Hp  = 1f; 
 
@@ -19,10 +19,18 @@ public class Enemy : MonoBehaviour
 
     public float sturnTime = 2f;
 
+    private Material playerMaterial; 
+    private Color originalColor;
+
+    private Color hitColor = Color.red;
+
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        
+        playerMaterial = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>().material;
+        originalColor = playerMaterial.color;
     }
 
     void moving()
@@ -37,13 +45,36 @@ public class Enemy : MonoBehaviour
         {   
             transform.position += dir.normalized * moveSpeed * Time.deltaTime;
         }
-
     }
 
     void attack()
     {
        Player.GetComponent<Snake>()._hp -= ATK;
+       Vector3 KnockbackDir = Player.transform.position - transform.position;  
+
+       float KnockbackMagnitude = KnockbackDir.magnitude;
+       KnockbackDir.y = 0f;
+       KnockbackDir = KnockbackDir.normalized * 1f;
+
+       Player.GetComponent<Rigidbody2D>().AddForce(KnockbackDir, ForceMode2D.Impulse);
+
+       StartCoroutine(ChangeColorRoutine());
     }
+
+    private IEnumerator ChangeColorRoutine()
+    {
+        playerMaterial.color = hitColor; 
+        yield return new WaitForSeconds(0.2f);
+
+        playerMaterial.color = originalColor;
+        yield return new WaitForSeconds(0.2f);
+
+        playerMaterial.color = hitColor;
+        yield return new WaitForSeconds(0.2f);
+
+        playerMaterial.color = originalColor;
+    }
+
 
     void takeDamage(float damage)
     {
@@ -76,7 +107,7 @@ public class Enemy : MonoBehaviour
             if(coolTime <= 0)
             {
                 attack();    
-                coolTime = 3f;
+                coolTime = 1f;
             }
         }
 
@@ -104,7 +135,6 @@ public class Enemy : MonoBehaviour
             {
                 expManger.GainExp(exp);
             }
-
         }
     }
 }

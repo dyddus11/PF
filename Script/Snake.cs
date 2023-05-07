@@ -21,9 +21,8 @@ public class Snake : MonoBehaviour
     public GameObject bulletPrefab;
     public float turnSpeed = 180f;
 
-    //
-    // List<GameObject> snakeBody = new List<GameObject>();
-    // List<GameObject> bodyParts = new List<GameObject>();
+    public HpBar healthBar;
+
 
     float countUp = 0.2f;
 
@@ -61,59 +60,13 @@ public class Snake : MonoBehaviour
     void Start()
     {
         enemies = new List<Enemy>(FindObjectsOfType<Enemy>()); 
-
-        // createBodyParts();
+        healthBar.setMaxHealth(_hp);
     }
-
-    // void SnakeMovement()
-    // {
-    //     snakeBody[0].GetComponent<Rigidbody2D>().velocity = snakeBody[0].transform.right * _moveSpeed * Time.deltaTime;
-
-    //     if(Input.GetAxis("Horizontal") != 0)
-    //         snakeBody[0].transform.Rotate(new Vector3(0,0,-turnSpeed * Time.deltaTime * Input.GetAxis("Horizontal")));
-    // }
-
+ 
     void attack()
     {
         
     }
-
-    // void createBodyParts()
-    // { 
-        
-
-    //     //맨뒤의 몸체 
-    //     BodyManger bodyM = snakeBody[snakeBody.Count - 1].GetComponent<BodyManger>();
-
-    //     if(countUp == 0)
-    //     {
-    //         bodyM.ClearBodyList(); 
-    //     }
-
-    //     countUp += Time.deltaTime;
-
-    //     if(countUp >= 0.2f)
-    //     {
-    //         GameObject temp = Instantiate(bodyParts[0], transform.position, transform.rotation, transform);
-
-    //         if(!temp.GetComponent<BodyManger>())
-    //             temp.AddComponent<BodyManger>(); 
-
-    //         if(!temp.GetComponent<Rigidbody2D>())
-    //         {
-    //             temp.AddComponent<Rigidbody2D>();
-    //             temp.GetComponent<Rigidbody2D>().gravityScale = 0;
-    //         }
-
-    //         snakeBody.Add(temp);
-    //         bodyParts.RemoveAt(0);
-    //         temp.GetComponent<BodyManger>().ClearBodyList();
-    //         countUp = 0;
-    //     }
-
-    // }
-
-
 
     // Update is called once per frame
     void FixedUpdate()
