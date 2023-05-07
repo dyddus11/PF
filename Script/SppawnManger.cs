@@ -30,7 +30,7 @@ public class SppawnManger : MonoBehaviour
         Vector2 spawnPosition = new Vector2(Random.Range(screenBounds.x, screenBounds.x + 2f * screenBounds.magnitude),
                                             Random.Range(screenBounds.y, screenBounds.y + 2f * screenBounds.magnitude));
 
-        for(int i =0; i<10; i++)
+        for(int i =0; i<5; i++)
         {
                     // 적 생성
             Instantiate(enemyPrefab, spawnPosition += Vector2.left, Quaternion.identity);

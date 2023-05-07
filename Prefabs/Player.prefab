@@ -99,5 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 0.01
   _hp: 100
-  Bullet: {fileID: 5081732559306766898, guid: 65e80d21253a03241a73c83134bf2431, type: 3}
   coolTime: 1
+  firePoint: {fileID: 0}
+  isEnemyDetected: 0
+  detectionRadius: 1
+  bulletPrefab: {fileID: 5081732559306766898, guid: 6ede5a42b685e5d44b0a50468adcc34b, type: 3}
+  turnSpeed: 180

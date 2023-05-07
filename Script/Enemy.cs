@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
 
     public float exp = 1f;
 
+    public bool sturn = false;
+
+    public float sturnTime = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +68,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moving();
 
         if(_distance <= 1.0f)
         {   
@@ -75,6 +78,21 @@ public class Enemy : MonoBehaviour
                 attack();    
                 coolTime = 3f;
             }
+        }
+
+        if(sturn)
+        {
+            sturnTime -= Time.deltaTime; 
+
+
+            if(sturnTime<=0)
+            {
+                sturnTime = 3f;
+                sturn = false;
+            }
+
+        } else {
+            moving();
         }
 
         if(Hp <= 0)

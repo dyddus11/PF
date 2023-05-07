@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 6008950832422632851}
   - component: {fileID: 2400092497501167848}
   - component: {fileID: 4575789826988773068}
+  - component: {fileID: -7120172860312823278}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Axe
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5081732559306766898}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a9f53f5ca2b1ad4382735e684d170f7, type: 3}
   m_Name: 
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5081732559306766898}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea07129320bdfbe4195924178fa060c7, type: 3}
   m_Name: 
@@ -170,3 +171,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7120172860312823278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081732559306766898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae9865bd14e13542adaa8570407e51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerPrefab: {fileID: 2093832296994860975, guid: 743b06de1feb09c4d9e6fcaab927b623, type: 3}
+  AxePrefab: {fileID: 5081732559306766898}
+  speed: 1

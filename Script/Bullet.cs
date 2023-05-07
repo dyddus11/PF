@@ -6,12 +6,28 @@ public class Bullet : MonoBehaviour
 {
 
     public float damage = 1;
+    public float speed;
 
     public float destroyTime = 10.0f;
 
+    BulletController _bulletController;
+
     void Start()
     {
+        
+        setSpeed(this.speed);
+    }
 
+    public void setSpeed(float speed)
+    {
+        BulletController bulletController = GetComponent<BulletController>();
+        bulletController.setSpeed(speed);
+    }
+
+    public void setStop()
+    {
+        BulletController bulletController = GetComponent<BulletController>();
+        bulletController.stop = !bulletController.stop;
     }
 
     // Update is called once per frame
@@ -22,5 +38,7 @@ public class Bullet : MonoBehaviour
         if(destroyTime <= 0)
             Destroy(gameObject);
     }
+
+    
 
 }
