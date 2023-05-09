@@ -106,6 +106,9 @@ MonoBehaviour:
   coolTime: 3
   Hp: 1
   exp: 1
+  sturn: 0
+  sturnTime: 2
+  hudDamageText: {fileID: 4601978185021120254, guid: 721763299e5ad2c459106d5e1cf6b573, type: 3}
 --- !u!50 &-4094154979009480926
 Rigidbody2D:
   serializedVersion: 4

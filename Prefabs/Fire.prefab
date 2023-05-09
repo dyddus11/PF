@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6633702444963964211}
   - component: {fileID: 7439341403968326130}
   - component: {fileID: 2400092497501167848}
-  - component: {fileID: -2027790838490344848}
+  - component: {fileID: -4532080864937755853}
   m_Layer: 7
   m_Name: Fire
   m_TagString: Bullet
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stop: 0
---- !u!114 &-2027790838490344848
+--- !u!114 &-4532080864937755853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,6 +153,5 @@ MonoBehaviour:
   damage: 1
   speed: 0
   destroyTime: 10
-  explodeScale: 1.5
   fadeDuration: 1
-  damage: 1
+  damage: 0.1

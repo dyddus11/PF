@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float ATK = 1f;
     public float coolTime = 1f;
 
-    public float Hp  = 1f; 
+    public float Hp  = 10f; 
 
     public float exp = 1f;
 
@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
 
     private Color hitColor = Color.red;
 
+    public GameObject hudDamageText;
+    public Transform hudPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,11 @@ public class Enemy : MonoBehaviour
         
         playerMaterial = GameObject.FindGameObjectWithTag("Player").GetComponent<Renderer>().material;
         originalColor = playerMaterial.color;
+    }
+
+    public void setSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 
     void moving()
@@ -77,8 +85,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void takeDamage(float damage)
+    public void takeDamage(float damage)
     {
+        Debug.Log(damage);
+
+        GameObject hudText = Instantiate(hudDamageText);
+        hudText.transform.position =  new Vector3(transform.position.x,transform.position.y,0);
+        hudText.GetComponent<DamageText>().damage = damage; 
         Hp -= damage;
     }
 
@@ -101,7 +114,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        if(_distance <= 1.0f)
+        if(_distance <= 1.5f)
         {   
             coolTime -= Time.deltaTime;
 
@@ -124,6 +137,7 @@ public class Enemy : MonoBehaviour
             }
 
         } else {
+    
             moving();
         }
 

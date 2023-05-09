@@ -9,7 +9,7 @@ public class Fire : Bullet
     float explodeScale = 1.1f;
     public float fadeDuration = 1.0f;
 
-    public new float damage = 0.1f;
+    public new float damage = 1f;
 
     float explodeTimer = 3f;
 
@@ -56,7 +56,7 @@ public class Fire : Bullet
         {
             GameObject otherGameObject= other.gameObject;
             Enemy enmey = otherGameObject.GetComponent<Enemy>();
-            enmey.Hp -=  damage;
+            enmey.takeDamage(damage);
 
             if(!exploded)
             {
